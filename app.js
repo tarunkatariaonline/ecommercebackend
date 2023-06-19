@@ -4,7 +4,12 @@ const app = express()
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
 
-app.use(cors())
+app.use(cors({
+  credentials:true,
+
+}))
+app.use(cookieParser())
+
 const dotenv = require('dotenv')
 dotenv.config({path:'./config.env'})
 const router = require('./Router/productRouter')
@@ -20,7 +25,6 @@ const cloudinary = require('cloudinary').v2;
 
 
 
-app.use(cookieParser())
 
 
 

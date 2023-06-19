@@ -71,7 +71,8 @@ await User.create(req.body);
   const token = await userLogin.generateAuthToken();
 
   res.cookie('ecomtoken',token,{
-    expires:new Date(Date.now()+2555555555555)
+    expires:new Date(Date.now()+2555555555555),
+    sameSite:"none"
     })
 
   res.status(201).json({
@@ -112,7 +113,8 @@ const isMetch = await bcrypt.compare(password,userLogin.password)
 if(isMetch){
     const token = await userLogin.generateAuthToken();
 res.cookie('ecomtoken',token,{
-expires:new Date(Date.now()+2555555555555)
+expires:new Date(Date.now()+2555555555555),
+sameSite:"none"
 })
 console.log(token);
 console.log(userLogin);
