@@ -467,7 +467,7 @@ const deleteUser = async(req,res)=>{
 
 const userLogout = (req,res)=>{
     console.log("Hello I am on Logout Page ")
-    // res.clearCookie('ecomtoken')
+    res.clearCookie('ecomtoken')
    return res.status(200).json({
         message:"Logout Successfully"
     })
