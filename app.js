@@ -5,14 +5,15 @@ app.use(express.json())
 app.use(express.urlencoded({extended:true}))
 var cookieParser = require('cookie-parser')
 app.use(cookieParser())
+const dotenv = require('dotenv')
+dotenv.config({path:'./config.env'})
 app.use(cors({
   
-  origin:"http://localhost:3000",
+  origin:process.env.FRONTENDURL,
   credentials:true,
 }))
 
-const dotenv = require('dotenv')
-dotenv.config({path:'./config.env'})
+
 const router = require('./Router/productRouter')
 const router2 = require('./Router/userRouter')
 
@@ -61,9 +62,9 @@ app.use(order)
 
 
 app.get('/', (req, res) => {
-  res.send('Hello World! updated')
+  res.send(`Hello World! updated again ${process.env.FRONTENDURL}`)
 })
 
 app.listen(port, () => {
-  console.log(`app listening on port ${port}`)
+  console.log(`app listening on port ${port}  `)
 })
