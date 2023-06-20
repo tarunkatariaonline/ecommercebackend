@@ -7,7 +7,7 @@ var cookieParser = require('cookie-parser')
 app.use(cookieParser())
 app.use(cors({
   
-  origin:"https://ecommerceindia.vercel.app",
+  origin:"http://localhost:3000",
   credentials:true,
 }))
 

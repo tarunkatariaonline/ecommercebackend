@@ -72,8 +72,9 @@ await User.create(req.body);
 
   res.cookie('ecomtoken',token,{
     expires:new Date(Date.now()+25555555555555),
-    httpOnly:true,
-secure:true
+  
+secure:true,
+sameSite:"none",
      
     })
 
@@ -116,7 +117,7 @@ if(isMetch){
     const token = await userLogin.generateAuthToken();
 res.cookie('ecomtoken',token,{
 expires:new Date(Date.now()+2555555555555),
-httpOnly:true,
+sameSite:"none",
 secure:true
 
 })
