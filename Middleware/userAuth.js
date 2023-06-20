@@ -5,9 +5,10 @@ const User = require('../Schema/userSchema');
 const userAuth= async (req,res,next)=>{
     try{
     const token = req.cookies.ecomtoken;
-    console.log(token)
+   
   
       if(!token){
+        console.log("token is not present")
         return res.status(406).json({
             message:"Token Not Found",
             isUser :false,

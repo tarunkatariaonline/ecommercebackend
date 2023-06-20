@@ -71,8 +71,10 @@ await User.create(req.body);
   const token = await userLogin.generateAuthToken();
 
   res.cookie('ecomtoken',token,{
-    expires:new Date(Date.now()+2555555555555),
-    sameSite:"none"
+    expires:new Date(Date.now()+25555555555555),
+    httpOnly:true,
+secure:true
+     
     })
 
   res.status(201).json({
@@ -114,7 +116,9 @@ if(isMetch){
     const token = await userLogin.generateAuthToken();
 res.cookie('ecomtoken',token,{
 expires:new Date(Date.now()+2555555555555),
-sameSite:"none"
+httpOnly:true,
+secure:true
+
 })
 console.log(token);
 console.log(userLogin);
@@ -462,7 +466,7 @@ const deleteUser = async(req,res)=>{
 
 const userLogout = (req,res)=>{
     console.log("Hello I am on Logout Page ")
-    res.clearCookie('ecomtoken')
+    // res.clearCookie('ecomtoken')
    return res.status(200).json({
         message:"Logout Successfully"
     })

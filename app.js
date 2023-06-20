@@ -3,12 +3,13 @@ var cors = require('cors')
 const app = express()
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
-
-app.use(cors({
-  credentials:true,
-
-}))
+var cookieParser = require('cookie-parser')
 app.use(cookieParser())
+app.use(cors({
+  
+  origin:"http://localhost:3000",
+  credentials:true
+}))
 
 const dotenv = require('dotenv')
 dotenv.config({path:'./config.env'})
@@ -19,8 +20,9 @@ const router2 = require('./Router/userRouter')
 
 
 const order = require('./Router/orderRouter')
-var cookieParser = require('cookie-parser')
+
 const cloudinary = require('cloudinary').v2;
+
 
 
 
