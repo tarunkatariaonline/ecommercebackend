@@ -62,7 +62,7 @@ app.use(order)
 
 
 app.get('/', (req, res) => {
-  res.send(`Hello World! updated again ${process.env.FRONTENDURL}`)
+  res.send(`Hello World! ${process.env.FRONTENDURL}`)
 })
 
 app.listen(port, () => {
