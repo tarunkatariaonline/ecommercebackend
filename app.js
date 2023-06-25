@@ -9,7 +9,7 @@ const dotenv = require('dotenv')
 dotenv.config({path:'./config.env'})
 app.use(cors({
   
-  origin:"https://ecommerceindia.vercel.app/",
+  origin:"https://ecommerceindia.vercel.app",
   credentials:true,
 }))
 
