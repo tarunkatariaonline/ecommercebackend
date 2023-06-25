@@ -151,14 +151,14 @@ const forgotUserPassword = async (req,res)=>{
 
     const {email} = req.body;
     if(!email){
-        return res.json({
+        return res.status(406).json({
             error:"Please enter Email Id."
         })
     }
 
     const user =  await User.findOne({email:email});
     if(!user){
-        return res.json({
+        return res.status(406).json({
             error:"User Not found."
         })
     }
@@ -172,7 +172,7 @@ const forgotUserPassword = async (req,res)=>{
 
    try{
    await sendForgotPasswordMail(user.email,message,subject)
-   res.json({
+   res.status(200).json({
     success:"true",
     message:"reset password email sended to your email."
    })
@@ -180,7 +180,7 @@ const forgotUserPassword = async (req,res)=>{
     user.resetPasswordToken=undefined;
    user.resetPasswordTokenExpire=undefined;
    await user.save({validateBeforeSave:false})
-    res.json({
+    res.status(406).json({
         error:"error found in mail send",
     
     })
@@ -467,9 +467,8 @@ const deleteUser = async(req,res)=>{
 
 const userLogout = (req,res)=>{
     console.log("Hello I am on Logout Page ")
-    res.clearCookie('ecomtoken',{
-        sameSite:"none"
-    })
+    res.clearCookie('ecomtoken')
+    
    return res.status(200).json({
         message:"Logout Successfully"
     })
